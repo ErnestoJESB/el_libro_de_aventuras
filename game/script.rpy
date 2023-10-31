@@ -7,7 +7,9 @@
 # Declare characters used by this game.
 define l = Character(_("Mr. lapiz"), color="#c8ffda")
 define m = Character(_("Me"), color="#c8c8ff")
-
+define d = Character(_("Draco"), color="#f0b3a0")
+define n = Character(_("Narrador"), color="#bca0f0")
+define b = Character(_("Bruja"), color="#a0f0a7")
 # This is a variable that is True if you've compared a VN to a book, and False
 # otherwise.
 default book = False
@@ -20,19 +22,19 @@ label start:
 
     scene inicio
     with dissolve
-    "Eres un niño que le gustan los libros y la lectura."
+    n "Eres un niño que le gustan los libros y la lectura."
     
     scene inicio1
     with dissolve
-    "Encuentras uno bien curioso y al abrilo ves que el libro está encantado."
+    n "Encuentras uno bien curioso y al abrilo ves que el libro está encantado."
 
     scene inicio2
     with dissolve
-    "En ese instante eres absorbido por él."
+    n "En ese instante eres absorbido por él."
 
     scene libreta
     with dissolve
-    "Ahora estás atrapado dentro."
+    n "Ahora estás atrapado dentro."
 
     scene lapiz2
     with dissolve
@@ -54,12 +56,12 @@ label start:
     scene presentaciondragon
     with dissolve
     play music "dragon.mp3"
-    "Mi nombre es Dracán Gramático, y soy un poderoso dragón que vuela por los cielos corrigiendo errores gramaticales con mi aliento de fuego y mis afiladas garras."
-    "No soy un dragón cualquiera, soy el más poderoso de todos ni creas que podrás escapar de mí."
+    d "Mi nombre es Dracán Gramático, y soy un poderoso dragón que vuela por los cielos corrigiendo errores gramaticales con mi aliento de fuego y mis afiladas garras."
+    d "No soy un dragón cualquiera, soy el más poderoso de todos ni creas que podrás escapar de mí."
     
     scene dragonvsnino
     with dissolve
-    "Para poder vencerme, debes responder correctamente a las preguntas que te haga."
+    d "Para poder vencerme, debes responder correctamente a las preguntas que te haga."
     jump juegoDragon
 
 
@@ -69,16 +71,16 @@ label juegoDragon:
         scene festejodrag        
         with dissolve
         play music "dragonmuerto.mp3"
-        "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
+        n "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
         scene ganastevsdrag        
         with dissolve
-        "Y lo has convertido en un Ajolote."
+        n "Y lo has convertido en un Ajolote."
         jump presentacionbruja
     elif vida_nino <= 0:
         scene perdistedrag        
         with dissolve
         play music "fuego.mp3"
-        "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
         $ vida_nino = 3
         $ vida_dragon = 3
         $ vida_bruja = 3
@@ -86,13 +88,13 @@ label juegoDragon:
     else:
         scene dragonvsnino
         with dissolve
-        "Te enfrentas a Dracán Gramático."
-        "Él tiene [vida_dragon] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a Dracán Gramático."
+        n "Él tiene [vida_dragon] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escdrag1
         with dissolve
-        "¿Cuál es la palabra correcta? 'Zanahoria' o 'Zanaoria'?"
+        d "¿Cuál es la palabra correcta? 'Zanahoria' o 'Zanaoria'?"
         scene ataqueadrag     
         with dissolve
         menu:
@@ -100,7 +102,7 @@ label juegoDragon:
                 scene ataqueadrag     
                 with dissolve
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida al dragón."
+                n "¡Respuesta correcta! Le restas una vida al dragón."
                 $ vida_dragon -= 1
                 $ puntaje += 10
                 jump juegoDragon1
@@ -108,7 +110,7 @@ label juegoDragon:
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon
 
@@ -119,16 +121,16 @@ label juegoDragon1:
         scene festejodrag        
         with dissolve
         play music "dragonmuerto.mp3"
-        "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
+        n "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
         scene ganastevsdrag        
         with dissolve
-        "Y lo has convertido en un ajolote."
+        n "Y lo has convertido en un ajolote."
         jump presentacionbruja
     elif vida_nino <= 0:
         scene perdistedrag        
         with dissolve
         play music "fuego.mp3"
-        "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
         $ vida_nino = 3
         $ vida_dragon = 3
         $ vida_bruja
@@ -136,13 +138,13 @@ label juegoDragon1:
     else:
         scene dragonvsnino
         with dissolve
-        "Te enfrentas a Dracán Gramático."
-        "Él tiene [vida_dragon] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a Dracán Gramático."
+        n "Él tiene [vida_dragon] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escdrag1
         with dissolve
-        "¿Cuál es la forma correcta de la siguiente oración: 'Ellos __________ a la tienda ayer.'?"
+        d "¿Cuál es la forma correcta de la siguiente oración: 'Ellos __________ a la tienda ayer.'?"
         scene ataqueadrag     
         with dissolve
         menu:
@@ -150,7 +152,7 @@ label juegoDragon1:
                 scene ataqueadrag     
                 with dissolve
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida al dragón."
+                n "¡Respuesta correcta! Le restas una vida al dragón."
                 $ vida_dragon -= 1
                 $ puntaje += 10
                 jump juegoDragon2 
@@ -158,14 +160,14 @@ label juegoDragon1:
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon1          
             "Fui":
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon1             
 
@@ -175,16 +177,16 @@ label juegoDragon2:
         scene festejodrag        
         with dissolve
         play music "dragonmuerto.mp3"
-        "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
+        n "¡Has vencido a Dracán Gramático y pasas al siguiente nivel"
         scene ganastevsdrag        
         with dissolve
-        "Y lo has convertido en un ajolote."
+        n "Y lo has convertido en un ajolote."
         jump presentacionbruja
     elif vida_nino <= 0:
         scene perdistedrag        
         with dissolve
         play music "fuego.mp3"
-        "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en polvo. ¡Juego terminado!"
         $ vida_nino = 3
         $ vida_dragon = 3
         $ vida_bruja
@@ -192,13 +194,13 @@ label juegoDragon2:
     else:
         scene dragonvsnino
         with dissolve
-        "Te enfrentas a Dracán Gramático."
-        "Él tiene [vida_dragon] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a Dracán Gramático."
+        n "Él tiene [vida_dragon] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escdrag1
         with dissolve
-        "¿Cuál de las siguientes oraciones contiene un error en el uso de los tiempos verbales?"
+        d "¿Cuál de las siguientes oraciones contiene un error en el uso de los tiempos verbales?"
         scene ataqueadrag     
         with dissolve
         menu:
@@ -207,7 +209,7 @@ label juegoDragon2:
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon2 
             "Ellos estaba jugando al fútbol en el parque.":
@@ -215,7 +217,7 @@ label juegoDragon2:
                 with dissolve
                 play music "success.mp3"
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida al dragón."
+                n "¡Respuesta correcta! Le restas una vida al dragón."
                 $ puntaje += 10
                 $ vida_dragon -= 1
                 jump juegoDragon2          
@@ -223,14 +225,14 @@ label juegoDragon2:
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon2             
             "María estudiará para su examen mañana.":
                 scene ataquedragon        
                 with dissolve
                 play music "disparodefuego.mp3"
-                "Respuesta incorrecta. El dragón te lanza fuego."
+                n "Respuesta incorrecta. El dragón te lanza fuego."
                 $ vida_nino -= 1
                 jump juegoDragon2             
 
@@ -239,12 +241,12 @@ label presentacionbruja:
     play music "bruja.mp3"
     scene presentacionbruja
     with dissolve
-    "Soy la bruja de la ortografía, y soy la más poderosa de todas."
-    "No podrás escapar de mí, niño."
+    b "Soy la bruja de la ortografía, y soy la más poderosa de todas."
+    b "No podrás escapar de mí, niño."
 
     scene brujavsnino
     with dissolve
-    "Para poder vencerme, debes responder correctamente a las preguntas que te haga."
+    b "Para poder vencerme, debes responder correctamente a las preguntas que te haga."
     jump juegoBruja
     
 
@@ -253,11 +255,11 @@ label juegoBruja:
     if vida_bruja <= 0:
         scene festejobruj        
         with dissolve
-        "¡Has vencido a la bruja de la ortografía."
+        n "¡Has vencido a la bruja de la ortografía."
         scene ganastevsbruj       
         with dissolve
         play music "cat.mp3"
-        "Y la has convertido en una gata fea."
+        n "Y la has convertido en una gata fea."
         jump juegoBruja
     elif vida_nino <= 0:
         $ vida_nino = 3
@@ -266,14 +268,14 @@ label juegoBruja:
         scene perdistebruj        
         with dissolve
         play music "chihuahua.mp3"
-        "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
         jump start
     else:
         scene bruja1vsnino
         with dissolve
-        "Te enfrentas a la bruja de la ortografía."
-        "Ella tiene [vida_bruja] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a la bruja de la ortografía."
+        n "Ella tiene [vida_bruja] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escbruj
         with dissolve
@@ -285,7 +287,7 @@ label juegoBruja:
                 scene ataquebruja       
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja
             "Bién":                
@@ -293,7 +295,7 @@ label juegoBruja:
 
                 with dissolve
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida a la bruja."
+                n "¡Respuesta correcta! Le restas una vida a la bruja."
                 $ vida_bruja -= 1
                 $ puntaje += 10
                 jump juegoBruja1
@@ -301,7 +303,7 @@ label juegoBruja:
                 scene ataquebruja        
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja
 
@@ -310,17 +312,17 @@ label juegoBruja1:
     if vida_bruja <= 0:
         scene festejobruj        
         with dissolve
-        "¡Has vencido a la bruja de la ortografía."
+        n "¡Has vencido a la bruja de la ortografía."
         scene ganastevsbruj       
         with dissolve
         play music "cat.mp3"
-        "Y la has convertido en una gata fea."
+        n "Y la has convertido en una gata fea."
         jump juegoBruja
     elif vida_nino <= 0:
         scene perdistebruj        
         with dissolve
         play music "chihuahua.mp3"
-        "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
         $ vida_nino = 3
         $ vida_bruja = 3
         $ vida_dragon
@@ -328,13 +330,13 @@ label juegoBruja1:
     else:
         scene bruja1vsnino
         with dissolve
-        "Te enfrentas a la bruja de la ortografía."
-        "Ella tiene [vida_bruja] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a la bruja de la ortografía."
+        n "Ella tiene [vida_bruja] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escbruj
         with dissolve
-        "¿Cuál es la ortografía correcta de la palabra que significa 'un animal pequeño que se parece a un ratón y vuela de noche'?"
+        b "¿Cuál es la ortografía correcta de la palabra que significa 'un animal pequeño que se parece a un ratón y vuela de noche'?"
         scene ataqueabruj     
         with dissolve
         menu:            
@@ -342,14 +344,14 @@ label juegoBruja1:
                 scene ataquebruja        
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja1          
             "Murcielgalo":
                 scene ataquebruja        
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja1
             "Murciélago":
@@ -357,7 +359,7 @@ label juegoBruja1:
 
                 with dissolve
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida a la bruja."
+                n "¡Respuesta correcta! Le restas una vida a la bruja."
                 $ vida_bruja -= 1
                 $ puntaje += 10
                 jump juegoBruja2              
@@ -367,17 +369,17 @@ label juegoBruja2:
     if vida_bruja <= 0:
         scene festejobruj        
         with dissolve
-        "¡Has vencido a la bruja de la ortografía."
+        n "¡Has vencido a la bruja de la ortografía."
         scene ganastevsbruj       
         with dissolve
         play music "cat.mp3"
-        "Y la has convertido en una gata fea."
+        n "Y la has convertido en una gata fea."
         jump hasGanado
     elif vida_nino <= 0:
         scene perdistebruj        
         with dissolve
         play music "chihuahua.mp3"
-        "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
+        n "Fallaste en responder correctamente y te has convertido en un chihuahua. ¡Juego terminado!"
         $ vida_nino = 3
         $ vida_bruja = 3
         $ vida_dragon
@@ -385,13 +387,13 @@ label juegoBruja2:
     else:
         scene bruja1vsnino
         with dissolve
-        "Te enfrentas a la bruja de la ortografía."
-        "Ella tiene [vida_bruja] vidas restantes."
-        "Te quedan [vida_nino] vidas."
+        n "Te enfrentas a la bruja de la ortografía."
+        n "Ella tiene [vida_bruja] vidas restantes."
+        n "Te quedan [vida_nino] vidas."
         
         scene escbruj
         with dissolve
-        "¿Cómo se llama el gentilicio de una persona que nació en la ciudad de Roma, Italia?"
+        b "¿Cómo se llama el gentilicio de una persona que nació en la ciudad de Roma, Italia?"
         scene ataqueabruj     
         with dissolve
         menu:
@@ -400,14 +402,14 @@ label juegoBruja2:
                 scene ataquebruja        
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja2 
             "Romano":
                 scene ataqueabruja
                 with dissolve
                 play music "success.mp3"
-                "¡Respuesta correcta! Le restas una vida a la bruja."
+                n "¡Respuesta correcta! Le restas una vida a la bruja."
                 $ puntaje += 10
                 $ vida_bruja -= 1
                 jump juegoBruja2          
@@ -415,7 +417,7 @@ label juegoBruja2:
                 scene ataquebruja        
                 with dissolve
                 play music "disparobruja.mp3"
-                "Respuesta incorrecta. La bruja te lanza un hechizo."
+                n "Respuesta incorrecta. La bruja te lanza un hechizo."
                 $ vida_nino -= 1
                 jump juegoBruja2
 
@@ -423,7 +425,7 @@ label juegoBruja2:
 label hasGanado:
     scene hasganado
     with dissolve
-    "¡Has ganado el juego!"
-    "Tu puntaje es de [puntaje] puntos."
+    n "¡Has ganado el juego!"
+    n "Tu puntaje es de [puntaje] puntos."
     "¡Felicidades!"
     return
