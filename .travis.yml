@@ -2,7 +2,7 @@ language: python  # Travis trabajará con Python, ya que Ren'Py está basado en 
 python:
   - "3.8"  # Usa la versión de Python que soporte Ren'Py
 os:
-  - windows  # Puedes cambiar a 'osx' o 'windows' si quieres probar en otros sistemas operativos
+  - linux  # Puedes cambiar a 'osx' o 'windows' si quieres probar en otros sistemas operativos
 
 before_install:
   # Descargar Ren'Py
