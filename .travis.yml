@@ -14,5 +14,5 @@ before_install:
   
 script:
   # Ejecutar Ren'Py en modo compilación para verificar errores
-  - ./renpy.sh ../nombre_de_tu_proyecto/ compile
+  - ./renpy.sh ../el_libro_de_aventuras/ compile
 
